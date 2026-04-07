@@ -2033,7 +2033,7 @@
                     <li><span class="check">&#10003;</span> Checklist automático</li>
                     <li><span class="check">&#10003;</span> Garantia de 7 dias</li>
                 </ul>
-                <a href="https://pay.cakto.com.br/6wyf5au_840338" class="btn btn-outline">ESCOLHER MINHA ÁREA</a>
+                <button class="btn btn-outline" onclick="abrirModalArea()">ESCOLHER MINHA ÁREA</button>
                 <p class="cta-trust">Pagamento único &middot; Sem assinatura</p>
             </div>
 
@@ -2413,6 +2413,87 @@
         });
     }
 })();
+</script>
+
+<!-- ==========================================
+     MODAL ESCOLHA DE ÁREA
+     ========================================== -->
+<div id="modalArea" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px">
+  <div style="background:#111;border:1px solid #1e1e1e;border-radius:20px;padding:36px 32px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;position:relative">
+
+    <button onclick="fecharModalArea()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#555;font-size:22px;cursor:pointer;line-height:1">×</button>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#00ff88;letter-spacing:2px;margin-bottom:10px">ÁREA INDIVIDUAL — R$47</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#e8e8e8;margin-bottom:6px">Qual área você quer dominar?</div>
+    <p style="font-size:13px;color:#888;margin-bottom:24px">Selecione uma área e você será direcionado para a compra.</p>
+
+    <div id="areaGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px"></div>
+
+    <p style="font-size:11px;color:#555;text-align:center;margin-top:20px">Pagamento único · Sem assinatura · Garantia de 7 dias</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var AREAS = [
+    { id: 'trabalhista',    nome: 'Trabalhista',    icon: '⚖️',  skills: 11, url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'civel',          nome: 'Cível',           icon: '📋',  skills: 8,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'penal',          nome: 'Penal',           icon: '🔒',  skills: 8,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'previdenciario', nome: 'Previdenciário',  icon: '🛡️',  skills: 8,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'familia',        nome: 'Família',         icon: '👨‍👩‍👧',  skills: 8,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'tributario',     nome: 'Tributário',      icon: '🧾',  skills: 6,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'contratos',      nome: 'Contratos',       icon: '📝',  skills: 6,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'societario',     nome: 'Societário',      icon: '🏢',  skills: 6,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'consumidor',     nome: 'Consumidor',      icon: '🛒',  skills: 6,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+    { id: 'imobiliario',    nome: 'Imobiliário',     icon: '🏠',  skills: 6,  url: 'https://pay.cakto.com.br/i66ibkg_840357' },
+  ];
+
+  // Renderizar grid de áreas
+  var grid = document.getElementById('areaGrid');
+  AREAS.forEach(function(area) {
+    var card = document.createElement('a');
+    card.href = area.url;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.style.cssText = 'display:flex;flex-direction:column;gap:6px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:12px;padding:16px;text-decoration:none;cursor:pointer;transition:border-color .2s,background .2s';
+    card.innerHTML =
+      '<span style="font-size:22px;line-height:1">' + area.icon + '</span>' +
+      '<span style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:600;color:#e8e8e8">' + area.nome + '</span>' +
+      '<span style="font-size:11px;color:#555">' + area.skills + ' skills</span>' +
+      '<span style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#00ff88;margin-top:4px">R$47 →</span>';
+    card.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#00ff88';
+      this.style.background = 'rgba(0,255,136,0.04)';
+    });
+    card.addEventListener('mouseleave', function() {
+      this.style.borderColor = '#1e1e1e';
+      this.style.background = '#0d0d0d';
+    });
+    grid.appendChild(card);
+  });
+
+  // Fechar ao clicar no backdrop
+  document.getElementById('modalArea').addEventListener('click', function(e) {
+    if (e.target === this) fecharModalArea();
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fecharModalArea();
+  });
+})();
+
+function abrirModalArea() {
+  var modal = document.getElementById('modalArea');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharModalArea() {
+  var modal = document.getElementById('modalArea');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
 </script>
 
 </body>
