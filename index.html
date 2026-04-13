@@ -103,7 +103,7 @@
             --border-dim: #1e1e1e;
             --border-subtle: #222222;
             --text-primary: #e8e8e8;
-            --text-secondary: #999999;
+            --text-secondary: #aaaaaa;
             --text-dim: #666666;
             --green-neon: #00ff88;
             --green-medium: #00e676;
@@ -146,14 +146,14 @@
 
         .green-text { color: var(--green-neon); }
         .green-gradient {
-            background: linear-gradient(135deg, var(--green-neon), var(--green-bright));
+            background: linear-gradient(135deg, var(--green-neon), var(--green-dim));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .green-glow-text {
             color: var(--green-neon);
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.2);
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.4), 0 0 20px rgba(0, 255, 136, 0.1);
         }
 
         /* ===== BUTTONS ===== */
@@ -207,7 +207,7 @@
         .btn-outline {
             background: transparent;
             color: var(--green-neon);
-            border: 2px solid rgba(0, 255, 136, 0.3);
+            border: 2px solid rgba(0, 255, 136, 0.6);
             position: relative;
             overflow: hidden;
         }
@@ -971,7 +971,7 @@
         .term-ai-content .dim { color: #4a5568; }
         .term-ai-content .accent { color: #00ff88; font-weight: 500; }
         .term-ai-content .gold { color: #fbbf24; font-weight: 600; }
-        .term-ai-content .green { color: #39ff14; }
+        .term-ai-content .green { color: var(--green-neon); }
         .term-ai-content .cyan { color: #00e676; }
         .term-ai-content .warn { color: #fb923c; }
         .term-ai-content .white { color: #e2e8f0; }
@@ -992,7 +992,7 @@
 
         @keyframes term-spin { to { transform: rotate(360deg); } }
 
-        .term-loaded { padding-left: 28px; color: #39ff14; font-size: 12px; }
+        .term-loaded { padding-left: 28px; color: var(--green-neon); font-size: 12px; }
 
         .term-divider { border: none; border-top: 1px solid #1a1a1a; margin: 12px 0; }
 
@@ -1017,7 +1017,7 @@
         }
 
         .term-check { padding-left: 28px; font-size: 12px; }
-        .term-check .ok { color: #39ff14; }
+        .term-check .ok { color: var(--green-neon); }
         .term-check .fail { color: #fb923c; }
 
         .term-stats {
@@ -1547,6 +1547,9 @@
             .hero h1 { font-size: 52px; }
             .hero-subtitle { font-size: 19px; }
         }
+        @media (min-width: 1280px) {
+            .hero h1 { font-size: 62px; }
+        }
     </style>
     <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -1568,7 +1571,7 @@
         <div class="reveal">
             <div class="hero-badge">
                 <div class="hero-badge-dot"></div>
-                Construído por advogados &middot; Usado em produção real
+                Construído por advogados &middot; RSA Advocacia · Blumenau/SC
             </div>
         </div>
 
@@ -2285,6 +2288,11 @@
                 <p class="cta-trust">Pagamento único &middot; 73 skills &middot; Garantia 7 dias</p>
             </div>
 
+        </div>
+        <div style="text-align:center;margin-top:28px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim)">&#128274; Pagamento seguro via Cakto</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim)">&#9989; Acesso imediato após confirmação</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim)">&#128260; Garantia de 7 dias</span>
         </div>
     </div>
 </section>
