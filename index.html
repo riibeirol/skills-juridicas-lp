@@ -3059,44 +3059,92 @@ Apresente em &lt;checklist_validacao&gt; os principais pontos verificados.
 (function() {
     const areasData = {
         trabalhista: {
-            icon: '\u2696\uFE0F', name: 'Trabalhista', count: 11,
-            skills: ['Petição Inicial', 'Contestação', 'Análise de Contrato', 'Cálculo Rescisório', 'Acordo Extrajudicial', 'Recurso Ordinário', 'Análise de Reclamatória', 'Parecer Jurídico', 'Notificação Extrajudicial', 'Réplica', 'Auditoria Trabalhista']
+            icon: "\u2696\ufe0f", name: "Trabalhista", count: 38,
+            skills: ["Petição Inicial Trabalhista", "Contestação Trabalhista", "Análise de Contrato de Trabalho", "Cálculo de Verbas Rescisórias", "Acordo Extrajudicial Trabalhista", "Recurso Ordinário Trabalhista", "Análise de Reclamatória Recebida", "Parecer Jurídico Trabalhista", "Notificação Extrajudicial Trabalhista", "Réplica Trabalhista", "Auditoria de Petição Trabalhista", "Embargos de Declaração Trabalhista", "Agravo de Petição Trabalhista", "Agravo de Instrumento Trabalhista", "Recurso de Revista ao TST", "Embargos ao TST (SDI)", "Recurso Adesivo Trabalhista", "Embargos à Execução Trabalhista", "Impugnação à Liquidação de Sentença", "Exceção de Pré-Executividade Trabalhista", "Acordo na Fase de Execução Trabalhista", "Tutela de Urgência Trabalhista", "Mandado de Segurança Trabalhista", "Ação Rescisória Trabalhista", "Dissídio Coletivo", "Ação Anulatória de Cláusula Coletiva", "Defesa em Processo de Justa Causa", "Rescisão Indireta", "Reconhecimento de Vínculo Empregatício (PJ/Pejotização)", "Acidente de Trabalho e Doença Ocupacional", "Assédio Moral e Sexual no Trabalho", "Insalubridade e Periculosidade", "Trabalho Intermitente", "Teletrabalho e Home Office", "Terceirização Trabalhista", "Dano Existencial Trabalhista", "Elaboração de Contrato de Trabalho", "Compliance Trabalhista"]
         },
         civel: {
-            icon: '\uD83C\uDFDB\uFE0F', name: 'Cível', count: 8,
-            skills: ['Petição Inicial', 'Contestação', 'Apelação', 'Análise de Contrato', 'Acordo Judicial', 'Réplica', 'Parecer', 'Cumprimento de Sentença']
-        },
-        penal: {
-            icon: '\uD83D\uDD12', name: 'Penal', count: 8,
-            skills: ['Resposta à Acusação', 'Alegações Finais', 'Habeas Corpus', 'Liberdade Provisória', 'Apelação Criminal', 'Defesa em IP', 'Parecer Criminal', 'Queixa-Crime']
-        },
-        previdenciario: {
-            icon: '\uD83C\uDFE5', name: 'Previdenciário', count: 8,
-            skills: ['Concessão de Benefício', 'Revisão de Benefício', 'Aposentadoria', 'Auxílio por Incapacidade', 'BPC/LOAS', 'Recurso ao CRPS', 'Mandado de Segurança', 'Parecer Previdenciário']
-        },
-        familia: {
-            icon: '\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67', name: 'Família e Sucessões', count: 8,
-            skills: ['Divórcio', 'Pensão Alimentícia', 'Guarda', 'Inventário', 'Acordo Extrajudicial', 'Modificação de Guarda', 'Regulamentação de Visitas', 'Parecer Familiar']
+            icon: "\ud83c\udfdb\ufe0f", name: "C\u00edvel", count: 39,
+            skills: ["Petição Inicial Cível", "Contestação Cível", "Recurso de Apelação Cível", "Análise de Contrato Cível", "Acordo Judicial e Extrajudicial Cível", "Réplica à Contestação Cível", "Parecer Jurídico Cível", "Cumprimento de Sentença", "Tutela Antecipada", "Tutela Cautelar Antecedente", "Tutela Antecipada Antecedente", "Execução de Título Extrajudicial", "Impugnação ao Cumprimento de Sentença", "Embargos à Execução Cível", "Exceção de Pré-Executividade", "Agravo de Instrumento", "Embargos de Declaração Cível", "Agravo Interno", "Recurso Especial", "Recurso Extraordinário", "Ação de Cobrança", "Ação Indenizatória", "Ação de Obrigação de Fazer ou Não Fazer", "Ação Declaratória", "Ação Monitória", "Reintegração de Posse", "Manutenção de Posse", "Usucapião Cível", "Ação Rescisória Cível", "Consignação em Pagamento", "Prestação de Contas", "Produção Antecipada de Provas", "Desconsideração da Personalidade Jurídica", "Habilitação de Crédito", "Embargos de Terceiro", "Oposição", "Mandado de Segurança Cível", "Notificação Extrajudicial Cível", "Substabelecimento"]
         },
         tributario: {
-            icon: '\uD83D\uDCB0', name: 'Tributário', count: 6,
-            skills: ['Mandado de Segurança', 'Ação Anulatória', 'Exceção de Pré-Executividade', 'Defesa Administrativa', 'Parecer Tributário', 'Planejamento Tributário']
+            icon: "\ud83d\udcb0", name: "Tribut\u00e1rio", count: 35,
+            skills: ["Mandado de Segurança Tributário", "Ação Anulatória de Débito Fiscal", "Exceção de Pré-Executividade", "Defesa/Impugnação Administrativa Fiscal", "Parecer Tributário", "Planejamento Tributário", "Embargos à Execução Fiscal", "Ação de Repetição de Indébito Tributário", "Ação Declaratória de Inexistência de Relação Jurídico-Tributária", "Ação Anulatória de Débito Fiscal", "Ação de Consignação em Pagamento Tributária", "Caução e Contracautela Tributária", "Defesa em Medida Cautelar Fiscal", "Ação Rescisória Tributária", "Embargos de Terceiro em Execução Fiscal", "Agravo de Instrumento em Matéria Tributária", "Impugnação de Auto de Infração", "Recurso Voluntário ao CARF", "Recurso Especial à CSRF (CARF — Câmara Superior)", "Sustentação Oral no CARF/CSRF", "Recurso Hierárquico em Processo Administrativo Tributário Estadual", "Pedido de Compensação Tributária", "Habilitação de Crédito Judicial Tributário", "Formulação de Consulta Tributária", "Pedido de Parcelamento e Adesão a Programas de Refinanciamento (REFIS/PERT/Outros)", "Transação Tributária (Lei 13.988/2020)", "Compliance Tributário", "Regime Especial de Tributação", "Revisão de Lançamento Tributário", "Certidão Negativa de Débitos e CPEN", "Cancelamento de CDA — Dívida Ativa", "Recurso Especial Tributário", "Amicus Curiae Tributário", "Defesa ao Redirecionamento da Execução Fiscal", "Ação Regressiva contra Corresponsáveis Tributários"]
         },
-        contratos: {
-            icon: '\uD83D\uDCCB', name: 'Contratos', count: 6,
-            skills: ['Elaboração de Contrato', 'Análise e Auditoria', 'Distrato', 'Aditivo Contratual', 'Notificação de Descumprimento', 'Parecer Contratual']
+        penal: {
+            icon: "\ud83d\udd12", name: "Penal", count: 35,
+            skills: ["Resposta à Acusação", "Alegações Finais / Memoriais", "Habeas Corpus", "Pedido de Liberdade Provisória", "Recurso de Apelação Criminal", "Defesa em Inquérito Policial", "Parecer Criminal", "Queixa-Crime", "Relaxamento de Prisão", "Revogação de Prisão Preventiva", "Audiência de Custódia — Manifestação Defensiva", "Impugnação de Medidas Cautelares", "Requerimento de Diligências no Inquérito", "Pedido de Acesso ao Inquérito Policial", "Defesa em PIC (Procedimento Investigatório Criminal do MP)", "Recurso em Sentido Estrito", "Contrarrazões em Recurso Criminal", "Embargos de Declaração em Matéria Penal", "Embargos Infringentes e de Nulidade", "Recurso Especial Criminal", "Recurso Extraordinário Criminal", "Arguição de Nulidades Processuais Penais", "Exceção de Suspeição e Impedimento", "Mandado de Segurança em Matéria Penal", "Defesa no Tribunal do Júri (Plenário)", "Memoriais no Tribunal do Júri", "Impronúncia e Desclassificação no Júri", "Apelação contra Decisão do Tribunal do Júri", "Progressão de Regime", "Livramento Condicional", "Pedido de Indulto e Comutação de Pena", "Remição de Pena por Trabalho e Estudo", "Agravo em Execução Penal", "Defesa em Processo de Falta Grave", "Revisão Criminal"]
         },
-        societario: {
-            icon: '\uD83C\uDFE2', name: 'Societário', count: 6,
-            skills: ['Contrato Social', 'Acordo de Sócios', 'Ata de Assembleia', 'Dissolução Societária', 'Parecer Societário', 'Due Diligence']
+        familia: {
+            icon: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67", name: "Fam\u00edlia e Sucess\u00f5es", count: 30,
+            skills: ["Ação de Divórcio", "Ação de Alimentos", "Ação de Guarda", "Inventário e Partilha", "Acordo Extrajudicial Familiar", "Modificação de Guarda e Alimentos", "Regulamentação de Visitas", "Parecer de Direito de Família", "Reconhecimento de União Estável", "Dissolução de União Estável", "Adoção", "Interdição e Curatela", "Tutela de Menor", "Alienação Parental", "Busca e Apreensão de Menor", "Alimentos Gravídicos", "Execução de Alimentos com Prisão Civil", "Exoneração de Alimentos", "Revisão de Alimentos", "Investigação de Paternidade", "Ação Negatória de Paternidade", "Multiparentalidade", "Partilha de Bens", "Pacto Antenupcial", "Destituição do Poder Familiar", "Medida Protetiva de Urgência (Lei Maria da Penha)", "Emancipação de Menor", "Alvará Judicial (Família)", "Testamento", "Filiação Socioafetiva"]
         },
-        consumidor: {
-            icon: '\uD83D\uDED2', name: 'Consumidor', count: 6,
-            skills: ['Petição Inicial', 'Contestação', 'Acordo', 'Recurso Inominado', 'Notificação Extrajudicial', 'Parecer Consumerista']
+        previdenciario: {
+            icon: "\ud83c\udfe5", name: "Previdenci\u00e1rio", count: 28,
+            skills: ["Acao de Concessao de Beneficio Previdenciario", "Acao de Revisao de Beneficio Previdenciario", "Peticao de Aposentadoria", "Auxilio por Incapacidade Temporaria e Permanente", "BPC/LOAS — Beneficio de Prestacao Continuada", "Recurso ao CRPS — Recurso Administrativo Previdenciario", "Mandado de Seguranca contra ato do INSS", "Parecer Previdenciario — Analise de Direitos e Tempo", "Acao de Concessao de Pensao por Morte", "Acao de Concessao de Auxilio-Acidente", "Acao de Concessao de Aposentadoria por Idade Urbana", "Acao de Concessao de Aposentadoria por Idade Rural", "Acao de Concessao de Aposentadoria Especial", "Acao de Concessao de Salario-Maternidade", "Acao de Revisao da Vida Toda (Tema 1102 STF/STJ)", "Acao de Revisao por Reconhecimento de Tempo Especial", "Acao de Revisao por Erro de Calculo da RMI", "Revisão de Enquadramento Previdenciário", "Restabelecimento de Benefício Previdenciário", "Tutela de Urgência em Matéria Previdenciária", "CTC — Certidão de Tempo de Contribuição", "Averbação de Tempo de Serviço/Contribuição", "Ação Acidentária", "Impugnação à Perícia Médica", "Embargos de Declaração em Matéria Previdenciária", "Agravo de Instrumento em Matéria Previdenciária", "Agravo Interno em Matéria Previdenciária", "Apelação em Matéria Previdenciária"]
         },
         imobiliario: {
-            icon: '\uD83C\uDFE0', name: 'Imobiliário', count: 6,
-            skills: ['Compra e Venda', 'Análise de Matrícula', 'Usucapião', 'Ação de Despejo', 'Notificação', 'Parecer Imobiliário']
+            icon: "\ud83c\udfe0", name: "Imobili\u00e1rio", count: 22,
+            skills: ["Contrato de Compra e Venda de Imóvel", "Análise de Matrícula Imobiliária", "Ação de Usucapião", "Ação de Despejo", "Notificação Imobiliária Extrajudicial", "Parecer Jurídico Imobiliário", "Adjudicação Compulsória", "Retificação de Área de Imóvel", "Imissão na Posse", "Reintegração de Posse (Imobiliário)", "Embargos de Terceiro (Imobiliário)", "Ação Renovatória de Locação Comercial", "Ação Revisional de Aluguel", "Cobrança de Taxas Condominiais", "Distrato Imobiliário e Rescisão de Promessa de Compra e Venda", "Revisão de Financiamento Imobiliário (SFH)", "Incorporação Imobiliária — Registro e Compliance", "Regularização Fundiária (REURB)", "Loteamento Irregular — Defesa do Adquirente", "Prestação de Contas de Condomínio", "Contrato de Locação Residencial e Comercial", "Usucapião Extrajudicial"]
+        },
+        contratos: {
+            icon: "\ud83d\udccb", name: "Contratos", count: 22,
+            skills: ["Elaboracao de Contrato", "Análise e Auditoria de Contrato", "Distrato e Rescisão Contratual", "Aditivo Contratual", "Notificacao de Descumprimento Contratual", "Parecer sobre Contrato", "NDA — Acordo de Confidencialidade", "Contrato de Prestacao de Servicos", "Contrato de Representacao Comercial", "Contrato de Franquia e Circular de Oferta de Franquia (COF)", "Contrato de Agencia e Distribuicao", "Contrato de Licenca de Software e SaaS", "SLA — Acordo de Nivel de Servico", "Cessao de Direitos", "MOU — Memorando de Entendimentos", "Contrato de Parceria e Joint Venture", "Contrato de Locação Comercial", "Contrato de Prestação de Serviços PJ", "Contrato de Comodato", "Termo de Responsabilidade", "Cláusula Penal — Elaboração e Revisão", "Contrato de Compra e Venda Empresarial"]
+        },
+        consumidor: {
+            icon: "\ud83d\uded2", name: "Consumidor", count: 19,
+            skills: ["Petição Inicial Consumerista", "Contestação em Ação Consumerista", "Acordo em Ação Consumerista", "Recurso Inominado / Apelação Consumerista", "Notificação Extrajudicial Consumerista", "Parecer de Direito do Consumidor", "Vício de Produto ou Serviço", "Negativação Indevida em Cadastros de Proteção ao Crédito", "Superendividamento do Consumidor", "Ação Coletiva Consumerista", "Desconsideração da Personalidade Jurídica no CDC", "Plano de Saúde — Negativa de Cobertura", "Arrependimento em Compra Online e Fora do Estabelecimento", "Revisão de Cláusulas Contratuais Abusivas", "Banco — Tarifas Indevidas e Juros Abusivos", "Publicidade Enganosa ou Abusiva", "Recall de Produto e Responsabilidade pelo Fato do Produto", "Defesa em Processo Administrativo no PROCON", "Mandado de Segurança para Tratamento de Saúde (Plano ou SUS)"]
+        },
+        digital: {
+            icon: "\ud83d\udcbb", name: "Digital e LGPD", count: 17,
+            skills: ["Notificação de Incidente LGPD", "Política de Privacidade e Termos de Uso", "Remoção de Conteúdo e Direito ao Esquecimento", "Defesa Administrativa ANPD", "Resposta a Titular de Dados", "Contrato DPA com Operador de Dados", "Indenização por Vazamento de Dados", "Denúncia de Crime Cibernético", "Restauração de Conta em Rede Social", "Ação de Indenização por Calúnia/Difamação em Redes Sociais", "Medida Cautelar de Suspensão de Perfil Falso (Impersonation)", "Contrato de Desenvolvimento de Software (SaaS)", "Contrato de Influenciador Digital (Publicidade)", "Ação contra Plataforma por Remoção Indevida de Conteúdo", "Impugnação de Auto de Infração ANPD", "Ação de Indenização por Deep Fake (Uso Não Autorizado de Imagem)", "Notificação Extrajudicial por Violação de Direitos Autorais Online"]
+        },
+        saude: {
+            icon: "\ud83e\ude7a", name: "Sa\u00fade", count: 14,
+            skills: ["Obrigação de Fazer — Plano de Saúde", "Indenização por Erro Médico", "Defesa de Médico em Processo CFM/CRM", "Ação de Reembolso de Despesas Médicas", "Liminar para Tratamento de Alto Custo", "Ação de Responsabilidade Civil Hospitalar", "Notificação Extrajudicial ao Plano de Saúde", "Recurso contra Cancelamento de Plano de Saúde", "Ação contra Plano de Saúde por Negativa de Cobertura (Doença Rara)", "Ação de Indenização por Erro Médico (Cirurgia)", "Ação contra ANVISA (Medicamento/Produto)", "Mandado de Segurança para Fornecimento de Medicamento pelo SUS", "Ação de Indenização por Infecção Hospitalar (IRAS)", "Recurso ao CRM por Infração Ética Médica"]
+        },
+        bancario: {
+            icon: "\ud83c\udfe6", name: "Banc\u00e1rio", count: 14,
+            skills: ["Contestação de Busca e Apreensão", "Ação Revisional de Contrato Bancário", "Repetição de Indébito Bancário", "Defesa em Execução com Alienação Fiduciária", "Consignação e Purgação da Mora", "Indenização por Inscrição Indevida em Cadastros de Inadimplentes", "Contestação de Ação Monitória Bancária", "Renegociação Extrajudicial de Dívida Bancária", "Ação de Indenização por Inscrição Indevida no SCR (Banco Central)", "Recurso ao Banco Central (Reclamação Formal)", "Ação de Revisão de Contrato de Crédito Imobiliário (FGTS/SFH)", "Ação contra Banco por Fraude em Conta (Transferência Não Autorizada)", "Medida Cautelar de Bloqueio de Transação Suspeita", "Ação de Indenização por Abertura Indevida de Conta (Conta Fantasma)"]
+        },
+        ambiental: {
+            icon: "\ud83c\udf3f", name: "Ambiental", count: 14,
+            skills: ["Defesa em Auto de Infração Ambiental", "Termo de Ajustamento de Conduta Ambiental (TAC)", "Licenciamento Ambiental — Recurso e Impugnação", "Defesa em Ação Civil Pública Ambiental", "Defesa em Crime Ambiental", "Licença de Operação Corretiva e Regularização Ambiental", "Ação de Indenização por Dano Ambiental", "Auditoria Ambiental e Compliance", "Ação Civil Pública Ambiental (Dano Coletivo)", "Recurso Administrativo contra Auto de Infração do IBAMA", "Ação de Regularização de Reserva Legal (CAR)", "Mandado de Segurança contra Licença Ambiental", "Defesa em Processo Administrativo Ambiental (SISNAMA)", "Ação de Indenização por Dano Ambiental Individual (Vizinhança)"]
+        },
+        administrativo: {
+            icon: "\ud83d\udcdc", name: "Administrativo", count: 14,
+            skills: ["Impugnação de Edital de Licitação", "Recurso Licitatório", "Mandado de Segurança em Concurso Público", "Anulação de Ato Administrativo", "Recurso de Auto de Infração Administrativo", "Defesa em Ação de Improbidade Administrativa", "Defesa em Processo Administrativo Disciplinar (PAD)", "Recurso Administrativo em Processo Licitatório", "Mandado de Segurança contra Ato Administrativo", "Ação Popular (Improbidade / Lesão ao Patrimônio Público)", "Ação de Improbidade Administrativa", "Recurso contra Penalidade em Contrato Administrativo", "Ação Anulatória de Ato Administrativo", "Pedido de Acesso à Informação (LAI) + Recurso"]
+        },
+        desportivo: {
+            icon: "\u26bd", name: "Desportivo", count: 12,
+            skills: ["Contrato de Atleta Profissional", "Recurso ao STJD", "Defesa Disciplinar perante Federação Desportiva", "Contrato de Patrocínio e Cessão de Imagem de Atleta", "Recurso em Processo Antidoping", "Rescisão de Contrato Desportivo", "Ação de Cobrança de Luvas e Premiações", "Ação de Indenização por Lesão Esportiva", "Mandado de Segurança contra Suspensão de Atleta", "Contrato de Agenciamento Desportivo", "Ação de Nulidade de Transferência Internacional de Atleta", "Recurso ao TAS/CAS (Tribunal Arbitral do Esporte)"]
+        },
+        aeronautico: {
+            icon: "\u2708\ufe0f", name: "Aeron\u00e1utico", count: 12,
+            skills: ["Indenização por Cancelamento de Voo", "Indenização por Atraso de Voo", "Indenização por Extravio de Bagagem", "Indenização por Overbooking", "Indenização por Negativa de Embarque", "Recurso no JECrim — Infração Aeronáutica", "Ação contra Companhia Aérea por Escala Perdida (Conexão Perdida)", "Ação de Indenização por Acidente Aéreo (Vítimas e Familiares)", "Ação de Cobrança de Milhas e Pontos (Cancelamento/Expiração Indevida)", "Recurso ANAC — Impugnação de Multa Administrativa", "Ação de Reembolso de Passagem (Recusa Indevida de Reembolso)", "Habeas Data contra Companhia Aérea (Dados de Passageiro)"]
+        },
+        militar: {
+            icon: "\ud83c\udf96\ufe0f", name: "Militar", count: 10,
+            skills: ["Defesa Criminal Militar", "Recurso em Processo Administrativo Disciplinar Militar (PAD)", "Ação de Reintegração ao Serviço Militar (Exclusão Ilegal)", "Habeas Corpus na Justiça Militar", "Mandado de Segurança contra Ato de Autoridade Militar", "Ação de Indenização por Acidente em Serviço Militar", "Revisão Criminal Militar (Revisão de Sentença Condenatória)", "Recurso em Sentido Estrito (CPPM)", "Pedido de Liberdade Provisória (Justiça Militar)", "Defesa em Processo Administrativo Disciplinar - Guarda Municipal"]
+        },
+        societario: {
+            icon: "\ud83c\udfe2", name: "Societ\u00e1rio", count: 8,
+            skills: ["Elaboracao Contrato Social", "Acordo De Socios Acionistas", "Ata De Assembleia Reuniao De Socios", "Dissolucao De Sociedade", "Parecer Societario", "Due Diligence Juridica", "Holding Familiar — Estruturação e Contrato Social", "M&A — Fusão e Aquisição"]
+        },
+        regulatorio: {
+            icon: "\ud83d\udce1", name: "Regulat\u00f3rio", count: 7,
+            skills: ["Recurso Sancionatório em Processo Administrativo de Agência Reguladora", "Defesa em Processo Administrativo Sancionador da ANS", "Parecer de Compliance Regulatório", "Recurso contra Multa de Agência Reguladora", "Pedido de Habilitação ou Licença perante Agência Reguladora", "Programa de Integridade e Anticorrupção", "Representação em Audiência Pública Regulatória"]
+        },
+        eleitoral: {
+            icon: "\ud83d\uddf3\ufe0f", name: "Eleitoral", count: 7,
+            skills: ["Registro de Candidatura", "AIME — Ação de Impugnação de Mandato Eletivo", "AIJE — Ação de Investigação Judicial Eleitoral", "Recurso Eleitoral", "Representação por Propaganda Eleitoral Irregular", "Prestação de Contas de Campanha Eleitoral", "Defesa em Ação por Abuso de Poder Eleitoral"]
+        },
+        agrario: {
+            icon: "\ud83c\udf3e", name: "Agr\u00e1rio", count: 7,
+            skills: ["Usucapião Rural (Pro Labore)", "Contrato de Arrendamento e Parceria Agrícola", "Reintegração de Posse Rural", "Regularização Fundiária Rural", "Defesa em Desapropriação Rural", "Indenização por Desapropriação Indireta Rural", "Inventário de Imóvel Rural"]
+        },
+        internacional: {
+            icon: "\ud83c\udf10", name: "Internacional", count: 6,
+            skills: ["Homologação de Sentença Estrangeira", "Carta Rogatória", "Defesa em Processo de Extradição", "Contrato Internacional", "Apostilamento e Legalização de Documentos", "Cooperação Jurídica Internacional"]
         }
     };
 
