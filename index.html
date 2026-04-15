@@ -1961,9 +1961,44 @@
     <div class="container">
         <div class="section-label reveal">Experimente agora</div>
         <h2 class="section-title reveal">5 skills <span class="green-text">100% grátis</span></h2>
-        <p class="section-subtitle reveal">Sem cadastro. Sem cartão. Copie o prompt, cole no Claude e veja a diferença — agora.</p>
+        <p class="section-subtitle reveal">Prompts completos — acesso gratuito no painel, sem cartão.</p>
 
-        <div style="display:flex;flex-direction:column;gap:16px;margin-top:40px">
+        <!-- Lead Capture Gate -->
+        <div id="leadGate" class="reveal" style="max-width:540px;margin:36px auto 0">
+          <div style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.25);border-radius:16px;padding:32px 28px;text-align:center">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green-neon);letter-spacing:3px;margin-bottom:14px">ACESSO GRATUITO</div>
+            <div style="font-size:19px;font-weight:700;color:var(--text-primary);margin-bottom:8px">Receba as 5 skills no seu painel</div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:24px;line-height:1.7">Preencha seus dados e o link de acesso é enviado imediatamente para o seu email.</div>
+            <form id="leadForm" style="display:flex;flex-direction:column;gap:10px">
+              <input type="text" id="leadName" placeholder="Seu nome" required
+                style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px 16px;color:#fff;font-size:14px;font-family:Arial,sans-serif;outline:none;width:100%;box-sizing:border-box">
+              <input type="email" id="leadEmail" placeholder="Seu email profissional" required
+                style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px 16px;color:#fff;font-size:14px;font-family:Arial,sans-serif;outline:none;width:100%;box-sizing:border-box">
+              <input type="tel" id="leadPhone" placeholder="WhatsApp com DDD (opcional)"
+                style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px 16px;color:#fff;font-size:14px;font-family:Arial,sans-serif;outline:none;width:100%;box-sizing:border-box">
+              <button type="submit" id="leadSubmit"
+                style="background:var(--green-neon);color:#000;border:none;border-radius:8px;padding:14px 20px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px">
+                Liberar meu acesso gratuito →
+              </button>
+            </form>
+            <p style="font-size:11px;color:var(--text-dim);margin-top:14px;line-height:1.7">📨 O acesso é enviado por email — use seu email real para receber o link de entrada no painel.</p>
+          </div>
+        </div>
+
+        <!-- Success State -->
+        <div id="leadSuccess" style="display:none;max-width:540px;margin:36px auto 0">
+          <div style="background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.3);border-radius:16px;padding:32px 28px;text-align:center">
+            <div style="font-size:32px;margin-bottom:14px">✅</div>
+            <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px">Acesso enviado!</div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:20px;line-height:1.7">Link enviado para <strong id="successEmailText" style="color:var(--green-neon)"></strong>.<br>Verifique sua caixa de entrada (e a pasta de spam).</div>
+            <a href="https://skills-juridicas-members.pages.dev/dashboard.html"
+              style="display:inline-block;background:var(--green-neon);color:#000;padding:12px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;text-decoration:none">
+              Já recebi — entrar no painel →
+            </a>
+          </div>
+        </div>
+
+        <div id="skillsWrap" style="display:flex;flex-direction:column;gap:16px;margin-top:40px">
 
             <!-- Card 1: Petição Inicial Trabalhista -->
             <div class="free-skill-card reveal" style="background:var(--bg-primary);border:1px solid rgba(0,255,136,0.15);border-radius:16px;overflow:hidden">
@@ -2394,11 +2429,11 @@ Apresente em &lt;checklist_validacao&gt; os principais pontos verificados.
                 </div>
             </div>
 
-        </div>
+        </div><!-- /skillsWrap -->
 
         <div style="text-align:center;margin-top:48px">
             <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px">Gostou? O pack completo tem <strong style="color:var(--text-primary)">411 skills</strong> como essas em 22 áreas.</p>
-            <a href="https://pay.cakto.com.br/6wyf5au_840338" class="btn btn-neon reveal">QUERO TODAS AS 411 SKILLS &rarr;<span class="btn-sub">Pagamento único R$ 197 · Garantia 7 dias</span></a>
+            <a href="https://pay.cakto.com.br/6wyf5au_840338" class="btn btn-neon reveal">QUERO TODAS AS 411 SKILLS &rarr;<span class="btn-sub">Pagamento único R$ 47 · Garantia 7 dias</span></a>
         </div>
     </div>
 </section>
@@ -3377,6 +3412,49 @@ function copiarSkill(btn) {
         }, 2000);
     });
 }
+
+// Lead capture form — acesso gratuito
+(function() {
+  var form = document.getElementById('leadForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var name  = document.getElementById('leadName').value.trim();
+    var email = document.getElementById('leadEmail').value.trim();
+    var phone = document.getElementById('leadPhone').value.trim();
+    var btn   = document.getElementById('leadSubmit');
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+      var res = await fetch('https://fizgujocdsnnvmwbrvgq.supabase.co/functions/v1/free-access', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpemd1am9jZHNubnZtd2JydmdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzODQ0NTgsImV4cCI6MjA4OTk2MDQ1OH0.6MmNrBq8c8ZaNDycvXRpKYPvmjeWRw6fmM1MNabFA9Y'
+        },
+        body: JSON.stringify({ name: name, email: email, phone: phone })
+      });
+      var data = await res.json();
+
+      if (data.ok) {
+        document.getElementById('leadGate').style.display = 'none';
+        document.getElementById('successEmailText').textContent = email;
+        document.getElementById('leadSuccess').style.display = 'block';
+        document.getElementById('leadSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'Skills Juridicas Free', value: 0, currency: 'BRL' });
+      } else {
+        throw new Error(data.error || 'Erro desconhecido');
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Liberar meu acesso gratuito →';
+      alert('Erro ao processar. Tente novamente em alguns segundos.');
+    }
+  });
+})();
 </script>
 
 </body>
