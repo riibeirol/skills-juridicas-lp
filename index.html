@@ -3040,8 +3040,6 @@ function copiarSkill(btn) {
         document.getElementById('successEmailText').textContent = email;
         document.getElementById('leadSuccess').style.display = 'block';
         // Desbloquear os cards
-        document.getElementById('skillsWrap').classList.remove('locked');
-        document.getElementById('skillsLockOverlay').style.display = 'none';
         document.getElementById('leadSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
         if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'Skills Juridicas Free', value: 0, currency: 'BRL' });
       } else {
