@@ -3036,7 +3036,7 @@ function copiarSkill(btn) {
           if (gate) gate.style.display = 'none';
           if (emailEl) emailEl.textContent = email;
           if (succ) { succ.style.display = 'block'; succ.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-          if (typeof fbq !== 'undefined') fbq('track', 'CompleteRegistration', { content_name: 'Skills Juridicas Free', value: 0, currency: 'BRL' });
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'Skills Juridicas Free', value: 0, currency: 'BRL' });
         } catch(uiErr) { console.warn('UI update error:', uiErr); }
       } else {
         throw new Error(data.error || 'Erro desconhecido');
