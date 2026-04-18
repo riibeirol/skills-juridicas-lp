@@ -3002,10 +3002,20 @@ function copiarSkill(btn) {
     });
 }
 
-// Lead capture form — acesso gratuito
+// Lead capture form — acesso gratuito (com CAPI dedup)
 (function() {
   var form = document.getElementById('leadForm');
   if (!form) return;
+
+  function getCookie(name) {
+    var m = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return m ? m[2] : null;
+  }
+
+  function generateEventId() {
+    if (crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 11);
+  }
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -3017,6 +3027,17 @@ function copiarSkill(btn) {
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
+    var eventId = generateEventId();
+    var fbp = getCookie('_fbp');
+    var fbc = getCookie('_fbc');
+
+    // fbc pode vir da URL (?fbclid=...) se ainda não foi armazenado em cookie
+    if (!fbc) {
+      var params = new URLSearchParams(window.location.search);
+      var fbclid = params.get('fbclid');
+      if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    }
+
     try {
       var res = await fetch('https://fizgujocdsnnvmwbrvgq.supabase.co/functions/v1/free-access', {
         method: 'POST',
@@ -3024,7 +3045,16 @@ function copiarSkill(btn) {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpemd1am9jZHNubnZtd2JydmdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzODQ0NTgsImV4cCI6MjA4OTk2MDQ1OH0.6MmNrBq8c8ZaNDycvXRpKYPvmjeWRw6fmM1MNabFA9Y'
         },
-        body: JSON.stringify({ name: name, email: email, phone: phone })
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          event_id: eventId,
+          fbp: fbp,
+          fbc: fbc,
+          event_source_url: window.location.href,
+          user_agent: navigator.userAgent
+        })
       });
       var data = await res.json();
 
@@ -3036,7 +3066,12 @@ function copiarSkill(btn) {
           if (gate) gate.style.display = 'none';
           if (emailEl) emailEl.textContent = email;
           if (succ) { succ.style.display = 'block'; succ.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-          if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'Skills Juridicas Free', value: 0, currency: 'BRL' });
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead',
+              { content_name: 'Skills Juridicas Free', value: 0, currency: 'BRL' },
+              { eventID: eventId }
+            );
+          }
         } catch(uiErr) { console.warn('UI update error:', uiErr); }
       } else {
         throw new Error(data.error || 'Erro desconhecido');
