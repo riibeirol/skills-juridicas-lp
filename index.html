@@ -1986,15 +1986,47 @@
         </div>
 
         <!-- Success State -->
-        <div id="leadSuccess" style="display:none;max-width:540px;margin:36px auto 0">
-          <div style="background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.3);border-radius:16px;padding:32px 28px;text-align:center">
-            <div style="font-size:32px;margin-bottom:14px">✅</div>
-            <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px">Acesso enviado!</div>
-            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:20px;line-height:1.7">Link enviado para <strong id="successEmailText" style="color:var(--green-neon)"></strong>.<br>Verifique sua caixa de entrada (e a pasta de spam).</div>
-            <a href="https://skills-juridicas-members.pages.dev/dashboard.html"
-              style="display:inline-block;background:var(--green-neon);color:#000;padding:12px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;text-decoration:none">
-              Já recebi — entrar no painel →
-            </a>
+        <div id="leadSuccess" style="display:none;max-width:720px;margin:36px auto 0">
+          <div style="background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.3);border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:20px">
+            <div style="font-size:32px;margin-bottom:10px">✅</div>
+            <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:6px">Acesso enviado!</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.7">Link enviado para <strong id="successEmailText" style="color:var(--green-neon)"></strong>.<br>Verifique sua caixa de entrada (e a pasta de spam).</div>
+          </div>
+
+          <!-- Upsell block: aparece logo após envio -->
+          <div style="background:var(--bg-secondary);border:1px solid rgba(0,255,136,0.15);border-radius:16px;padding:28px 24px">
+            <div style="text-align:center;margin-bottom:22px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green-neon);letter-spacing:3px;margin-bottom:10px">DESBLOQUEIE TUDO AGORA</div>
+              <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:6px">Pegou as 5 grátis? Destrava o resto:</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">As 5 skills gratuitas são só uma amostra. Escolha abaixo e receba acesso imediato às skills completas.</div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+              <!-- Opção A: 1 área -->
+              <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:22px 20px;display:flex;flex-direction:column">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:2px;margin-bottom:10px">1 ÁREA COMPLETA</div>
+                <div style="font-size:26px;font-weight:800;color:var(--text-primary);margin-bottom:4px">R$ 9,90</div>
+                <div style="font-size:11px;color:var(--green-neon);font-weight:600;letter-spacing:1px;margin-bottom:14px">PAGAMENTO ÚNICO · VITALÍCIO</div>
+                <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:18px;flex:1">Todas as skills de 1 área do direito (18-22 skills) da sua escolha — Trabalhista, Cível, Tributário, Penal ou outras 18.</div>
+                <a href="#pricing" style="display:block;background:transparent;color:var(--text-primary);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:12px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;text-align:center;letter-spacing:1px">ESCOLHER MINHA ÁREA →</a>
+              </div>
+
+              <!-- Opção B: pack completo (destaque) -->
+              <div style="background:rgba(0,255,136,0.05);border:2px solid var(--green-neon);border-radius:12px;padding:22px 20px;display:flex;flex-direction:column;position:relative">
+                <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--green-neon);color:#000;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1.5px">MAIS ESCOLHIDO</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green-neon);letter-spacing:2px;margin-bottom:10px">PACK COMPLETO</div>
+                <div style="font-size:26px;font-weight:800;color:var(--text-primary);margin-bottom:4px">R$ 47</div>
+                <div style="font-size:11px;color:var(--green-neon);font-weight:600;letter-spacing:1px;margin-bottom:14px">PAGAMENTO ÚNICO · VITALÍCIO</div>
+                <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:18px;flex:1"><strong style="color:var(--text-primary)">411 skills</strong> em <strong style="color:var(--text-primary)">22 áreas do direito</strong>. Tudo pronto, vitalício, sem mensalidade. R$ 0,11 por skill.</div>
+                <a href="https://pay.cakto.com.br/6wyf5au_840338" target="_blank" rel="noopener" onclick="fbq('track','InitiateCheckout',{content_name:'Skills Jurídicas — Pack Completo',value:47,currency:'BRL',num_items:1})" style="display:block;background:var(--green-neon);color:#000;border-radius:8px;padding:12px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;text-decoration:none;text-align:center;letter-spacing:1px">QUERO TUDO — R$ 47 →</a>
+              </div>
+            </div>
+
+            <p style="text-align:center;font-size:11px;color:var(--text-dim);margin-top:18px;line-height:1.7">Garantia de 7 dias · Acesso imediato · Sem mensalidade · Sem renovação</p>
+
+            <div style="text-align:center;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06)">
+              <a href="https://skills-juridicas-members.pages.dev/dashboard.html" style="font-size:12px;color:var(--text-secondary);text-decoration:underline;font-family:'JetBrains Mono',monospace">Já recebi o email — entrar no painel gratuito →</a>
+            </div>
           </div>
         </div>
 
